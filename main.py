@@ -5,10 +5,9 @@ from datetime import datetime
 from telebot import types
 
 # Загрузка конфигурации
-with open("Config.txt", "r", encoding="utf-8") as f:
-    lines = f.read().splitlines()
-    TOKEN = lines[0].split("=", 1)[1].strip()
-    ADMIN_ID = int(lines[1].split("=", 1)[1].strip())
+
+TOKEN = os.environ.get("BOT_TOKEN")
+ADMIN_ID = int(os.environ.get("ADMIN_ID"))
 
 bot = telebot.TeleBot(TOKEN)
 USERS_FILE = "users.json"
